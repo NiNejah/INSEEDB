@@ -1,0 +1,68 @@
+Dans un premier temps, il faut modéliser et construire la base de données des régions, 
+départements et villes françaises. La base de données devra être en 3FN et gérer les régions, 
+départements et villes françaises. Il s'agira d'utiliser au maximum les données des fichiers. 
+Les régions et département ont chacun une commune chef-lieu. Les villes sont dans des départements qui sont eux-mêmes dans des régions. 
+ 
+- Dessin du fichier « Communes existantes » et liste des variables:
+Nom de la variable 	 | Longueur de la variable 	| Désignation et modalités de la variable
+TYPECOM |  	4 |  	Type de commune
+COM |  	5 |  	Code commune
+REG |  	2 |  	Code région
+DEP |  	3 |  	Code département
+CTCD |  	4 |  	Code de la collectivité territoriale ayant les compétences départementales
+ARR |  	4 |  	Code arrondissement
+TNCC |  	1 |  	Type de nom en clair
+NCC |  	200 |  	Nom en clair (majuscules)
+NCCENR |  	200 |  	Nom en clair (typographie riche)
+LIBELLE |  	200 |  	Nom en clair (typographie riche) avec article
+CAN |  	5 |  	Code canton. Pour les communes « multi-cantonales », code décliné de 99 à 90 (pseudo-canton) ou de 89 à 80 (communes nouvelles)
+COMPARENT |  	5 |  	Code de la commune parente pour les arrondissements municipaux et les communes associées ou déléguées.
+
+
+– Dessin du fichier « Départements » et liste des variables 
+Nom de la variable |	Longueur de la variable |	Désignation et modalités de la variable
+DEP |  	3 | 	Code département
+REG |  	2 | 	Code région
+CHEFLIEU |  	5 | 	Code de la commune chef-lieu
+TNCC |  	1 | 	Type de nom en clair
+NCC |  	200 | 	Nom en clair (majuscules)
+NCCENR |  	200 | 	Nom en clair (typographie riche)
+LIBELLE |  	200 | 	Nom en clair (typographie riche) avec article
+
+
+ – Dessin du fichier « Régions » et liste des variables
+REG |  	2 |  	Code région
+CHEFLIEU |  	5 |  	Code de la commune chef-lieu
+TNCC |  	1 |  	Type de nom en clair
+NCC |  	200 |  	Nom en clair (majuscules)
+NCCENR |  	200 |  	Nom en clair (typographie riche)
+LIBELLE |  	200 |  	Nom en clair (typographie riche) avec article
+
+
+# cat rep : 
+
+Voici une proposition de modèle de données relationnelles pour cette base de données :
+
+Table Région
+
+    IdRegion (clé primaire) : identifiant unique de la région
+    NomRegion : nom de la région
+    IdCommuneChefLieu : identifiant unique de la commune chef-lieu
+
+Table Departement
+
+    IdDepartement (clé primaire) : identifiant unique du département
+    NomDepartement : nom du département
+    IdRegion (clé étrangère) : identifiant unique de la région à laquelle appartient le département
+    IdCommuneChefLieu (clé étrangère) : identifiant unique de la commune chef-lieu du département
+
+Table Commune
+
+    IdCommune (clé primaire) : identifiant unique de la commune
+    NomCommune : nom de la commune
+    IdDepartement (clé étrangère) : identifiant unique du département auquel appartient la commune
+
+Nous pouvons utiliser les variables des fichiers de l'INSEE pour remplir ces tables et définir les clés primaires et étrangères. Par exemple, 
+le code commune (variable COM) sera utilisé pour identifier chaque commune de manière unique dans la table Commune, 
+le code département (variable DEP) sera utilisé pour identifier chaque département dans la table Departement, 
+et le code région (variable REG) sera utilisé pour identifier chaque région dans la table Région.
