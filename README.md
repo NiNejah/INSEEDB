@@ -2,5 +2,5 @@
 ## Database config  
 In [configuration file](./config.py) Change (DBNAME , USERNAME, PASS) to your database and add it to [.gitignore](.gitignore)
 
-## RUN
+## RUN
 > python3 main
