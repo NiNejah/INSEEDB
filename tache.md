@@ -4,7 +4,6 @@
 
 > Read REAME.md
 
-TODO : (abdol) rimplire Regio et chef ! 
-TODO : (nejah) rimplire commune et dept et chef 
+TODO : (abdol) remplire commune et dept_cheflui
 
-TODO : state
+TODO : (nejah) state .
