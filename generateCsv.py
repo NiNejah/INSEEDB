@@ -1,40 +1,41 @@
 import csv
+from typing import List, Union
 
-def generateCsvFile(oldCsvFilePath, colsTobeDeleted, newCsvFilePath, sep=',', colDeleteIndex=None, rowTobeDeleteDesreption=None, deleteHead=False):
-    # Open the old CSV file for reading
-    with open(oldCsvFilePath, 'r') as oldCsvFile:
-        # Open the new CSV file for writing
-        with open(newCsvFilePath, 'w', newline='') as newCsvFile:
-            # Create a CSV writer for the new file
-            writer = csv.writer(newCsvFile, delimiter=sep)
+def generateCsvFile(oldCsvFilePath: str, deleteAllExceptCols: List[int], newCsvFilePath: str, sep=',', colDeleteIndex: Union[int, None] = None, rowTobeDeleteDesreption: Union[str, None] = None, deleteHead: bool = False):
+    
+    # Create a set of column indices to be deleted
+    colsTobeDeleted = set(range(len(next(csv.reader(open(oldCsvFilePath)))))) - set(deleteAllExceptCols)
+    
+    with open(oldCsvFilePath, 'r') as oldFile, open(newCsvFilePath, 'w', newline='') as newFile:
+        reader = csv.reader(oldFile, delimiter=sep)
+        writer = csv.writer(newFile, delimiter=sep)
+        
+        # Handle header
+        if deleteHead:
+            next(reader)  # Skip reading the first line (header) from the old CSV file
+            # writer.writerow(deleteAllExceptCols)  # Write the new header to the new CSV file
+        else:
+            header = next(reader)
+            writer.writerow([header[i] for i in deleteAllExceptCols])
+        
+        # Handle rows
+        for row in reader:
+            if colDeleteIndex is not None and row[colDeleteIndex] == rowTobeDeleteDesreption:
+                continue
             
-            # Read the old CSV file using a CSV reader
-            reader = csv.reader(oldCsvFile, delimiter=sep)
-            
-            # Find the index of the column to be deleted, if provided
-            if colDeleteIndex is not None:
-                colDeleteIndex = int(colDeleteIndex) - 1
-            
-            # Find the indices of the columns to be deleted in the new CSV file
-            colsTobeDeleted = [int(i) - 1 for i in colsTobeDeleted]
-            
-            # Write the header row to the new CSV file, if not deleted
-            if not deleteHead:
-                header = next(reader)
-                if colDeleteIndex is not None:
-                    header = [header[i] for i in range(len(header)) if i != colDeleteIndex]
-                newHeader = [header[i] for i in range(len(header)) if i not in colsTobeDeleted]
-                writer.writerow(newHeader)
-            else:
-                # Skip the header row
-                next(reader)
-            # Write the remaining rows to the new CSV file
-            for row in reader:
-                if colDeleteIndex is not None and row[colDeleteIndex] == rowTobeDeleteDesreption:
-                    continue
-                newRow = [row[i] for i in range(len(row)) if i not in colsTobeDeleted]
-                writer.writerow(newRow)
+            writer.writerow([row[i] for i in deleteAllExceptCols if i not in colsTobeDeleted])
 
+# For Region Table 
+generateCsvFile('./csv/original/region.csv',[0,5],'./csv/fill/fill_region.csv',deleteHead=True)
 
+# # For Departement table
+# generateCsvFile('./csv/original/departement.csv',[3,4,5],'./csv/fill/fill_departement.csv',deleteHead=True)
 
-generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/new_fill_region1.csv',deleteHead=True)
+# # For commune table
+# generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/fill/fill_region1.csv',deleteHead=True)
+
+# # For Departement chefLieu table
+# generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/fill/fill_region1.csv',deleteHead=True)
+
+# # For RegionChefLieu chefLieu table
+# generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/fill/fill_region1.csv',deleteHead=True)
