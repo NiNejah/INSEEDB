@@ -29,13 +29,13 @@ def generateCsvFile(oldCsvFilePath: str, deleteAllExceptCols: List[int], newCsvF
 generateCsvFile('./csv/original/region.csv',[0,5],'./csv/fill/fill_region.csv',deleteHead=True)
 
 # # For Departement table
-# generateCsvFile('./csv/original/departement.csv',[3,4,5],'./csv/fill/fill_departement.csv',deleteHead=True)
+generateCsvFile('./csv/original/departement.csv',[0,1,6],'./csv/fill/fill_departement.csv',deleteHead=True)
 
 # # For commune table
-# generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/fill/fill_region1.csv',deleteHead=True)
+generateCsvFile('./csv/original/commune.csv',[1,3,10],'./csv/fill/fill_commune.csv',colDeleteIndex=0,rowTobeDeleteDesreption="COMD",deleteHead=True)
 
 # # For Departement chefLieu table
-# generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/fill/fill_region1.csv',deleteHead=True)
+generateCsvFile('./csv/original/commune.csv',[1,3],'./csv/fill/fill_departement_chefLieu.csv',colDeleteIndex=0,rowTobeDeleteDesreption="COMD",deleteHead=True)
 
 # # For RegionChefLieu chefLieu table
-# generateCsvFile('./csv/original/region.csv',[2,3,4,5],'./csv/fill/fill_region1.csv',deleteHead=True)
+generateCsvFile('./csv/original/commune.csv',[1,2],'./csv/fill/fill_region_chefLieu.csv',colDeleteIndex=0,rowTobeDeleteDesreption="COMD",deleteHead=True)
