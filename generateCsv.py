@@ -35,7 +35,43 @@ def generateCsvFile(oldCsvFilePath: str, deleteAllExceptCols: List[int], newCsvF
 
             writer.writerow([row[i] for i in deleteAllExceptCols if i not in colsTobeDeleted])
 
-# # For Region Table
+
+def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: List[str], sep: str):
+    # Open the CSV file and create a list of rows
+    with open(csvFile, 'r', newline='') as file:
+        reader = csv.reader(file, delimiter=sep)
+        rows = list(reader)
+    
+    # Insert the new columns at the specified indices
+    for header, index, value in zip(headers, intoIndex, values):
+        for row in rows:
+            row.insert(index, value)
+        rows[0].insert(index, header)
+    
+    # Write the updated rows to the CSV file
+    with open(csvFile, 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=sep)
+        for row in rows:
+            writer.writerow(row)
+
+def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: List[str], sep: str):
+    # Open the CSV file and create a list of rows
+    with open(csvFile, 'r', newline='') as file:
+        reader = csv.reader(file, delimiter=sep)
+        rows = list(reader)
+    
+    # Insert the new columns at the specified indices
+    for header, index, value in zip(headers, intoIndex, values):
+        for row in rows:
+            row.insert(index, value)
+        rows[0][index] = header  # Set the header of the new column at the correct position
+            
+    # Write the updated rows to the CSV file
+    with open(csvFile, 'w', newline='') as file:
+        writer = csv.writer(file, delimiter=sep)
+        for row in rows:
+            writer.writerow(row)
+# # # For Region Table
 # generateCsvFile('./csv/original/region.csv',[0,5],'./csv/fill/fill_region.csv',deleteHeader=True)
 
 # # # For Departement table
@@ -51,7 +87,7 @@ def generateCsvFile(oldCsvFilePath: str, deleteAllExceptCols: List[int], newCsvF
 # generateCsvFile('./csv/original/commune.csv',[1,2],'./csv/fill/fill_region_chefLieu.csv',colDeleteIndex=0,rowTobeDeleteDesreption="COMD",deleteHeader=True)
 
 
-# Population :
+# # # Population :
 # # For Population 19
 # generateCsvFile('./csv/vrg/dossier_complet.csv',[0,1],'./csv/fill/Population_19.csv',sep=';')
 
@@ -61,8 +97,15 @@ def generateCsvFile(oldCsvFilePath: str, deleteAllExceptCols: List[int], newCsvF
 # # For Population 19 F
 # generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('U')],'./csv/fill/Population_19_F.csv',sep=';')
 
+# # For Population 19 0 - 14 tous :
+generateCsvFile('./csv/vrg/dossier_complet.csv',[0,2],'./csv/fill/Population_19_0014.csv',sep=';')
+
+
 # # For Population 13
 # generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('DB')],'./csv/fill/Population_13.csv',sep=';')
 
 # # For Population 08
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('HB')],'./csv/fill/Population_08.csv',sep=';')
+# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,209],'./csv/fill/Population_08.csv',sep=';')
+# addColumn('./csv/fill/Population_08.csv',["indicat","cat"],[1,3],["pupulation","2008"],';')
+
+# # # TESTS : 
