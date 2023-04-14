@@ -72,6 +72,7 @@ def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: Li
 # # # Population :
 # # For Population 19
 # generateCsvFile('./csv/vrg/dossier_complet.csv',[0,1],'./csv/fill/Population_19.csv',sep=';')
+# addColumn('./csv/fill/Population_19.csv',['indicator','category','startyear','endyear'],[1,2,3,4],["pupulation","tous","2019",""],';')
 
 # # For Population 19 H
 # generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('J')],'./csv/fill/Population_19_H.csv',sep=';')
@@ -80,7 +81,7 @@ def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: Li
 # generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('U')],'./csv/fill/Population_19_F.csv',sep=';')
 
 # # For Population 19 0 - 14 tous :
-generateCsvFile('./csv/vrg/dossier_complet.csv',[0,2],'./csv/fill/Population_19_0014.csv',sep=';')
+# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,2],'./csv/fill/Population_19_0014.csv',sep=';')
 
 
 # # For Population 13
