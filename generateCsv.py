@@ -46,24 +46,6 @@ def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: Li
     for header, index, value in zip(headers, intoIndex, values):
         for row in rows:
             row.insert(index, value)
-        rows[0].insert(index, header)
-    
-    # Write the updated rows to the CSV file
-    with open(csvFile, 'w', newline='') as file:
-        writer = csv.writer(file, delimiter=sep)
-        for row in rows:
-            writer.writerow(row)
-
-def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: List[str], sep: str):
-    # Open the CSV file and create a list of rows
-    with open(csvFile, 'r', newline='') as file:
-        reader = csv.reader(file, delimiter=sep)
-        rows = list(reader)
-    
-    # Insert the new columns at the specified indices
-    for header, index, value in zip(headers, intoIndex, values):
-        for row in rows:
-            row.insert(index, value)
         rows[0][index] = header  # Set the header of the new column at the correct position
             
     # Write the updated rows to the CSV file
