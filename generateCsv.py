@@ -68,27 +68,307 @@ def addColumn(csvFile: str, headers: List[str], intoIndex: List[int], values: Li
 # # # For RegionChefLieu chefLieu table
 # generateCsvFile('./csv/original/commune.csv',[1,2],'./csv/fill/fill_region_chefLieu.csv',colDeleteIndex=0,rowTobeDeleteDesreption="COMD",deleteHeader=True)
 
+dataFile = './csv/vrg/dossier_complet.csv'
+fillFile = './csv/fill/'
 
 # # # Population :
-# # For Population 19
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,1],'./csv/fill/Population_19.csv',sep=';')
-# addColumn('./csv/fill/Population_19.csv',['indicator','category','startyear','endyear'],[1,2,3,4],["pupulation","tous","2019",""],';')
+#################################### 2019 ############################################
+    # # For Population 2019 Tout:
+# generateCsvFile(dataFile, [0,1], fillFile + 'Population_19.csv', sep=';')
+# addColumn(fillFile + 'Population_19.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Population en 2019", "2019", ""], ';')
 
-# # For Population 19 H
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('J')],'./csv/fill/Population_19_H.csv',sep=';')
+    # # For Population 2019 0 - 14 Tout :
+# generateCsvFile(dataFile, [0,2], fillFile + 'Population_19_00_14.csv', sep=';')
+# addColumn(fillFile + 'Population_19_00_14.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 0-14 ans en 2019", "2019", ""], ';')
 
-# # For Population 19 F
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('U')],'./csv/fill/Population_19_F.csv',sep=';')
+    # # For Population 2019 15 - 29 Tout :
+# generateCsvFile(dataFile, [0,3], fillFile + 'Population_19_15_29.csv', sep=';')
+# addColumn(fillFile + 'Population_19_15_29.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 15-29 ans en 2019", "2019", ""], ';')
 
-# # For Population 19 0 - 14 tous :
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,2],'./csv/fill/Population_19_0014.csv',sep=';')
+    # # For Population 2019 30 - 44 Tout :
+# generateCsvFile(dataFile, [0,4], fillFile + 'Population_19_30_44.csv', sep=';')
+# addColumn(fillFile + 'Population_19_30_44.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 30-44 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 45 - 59 Tout :
+# generateCsvFile(dataFile, [0,5], fillFile + 'Population_19_45_59.csv', sep=';')
+#addColumn(fillFile + 'Population_19_45_59.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 45-59 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 60 - 74 Tout :
+# generateCsvFile(dataFile, [0,6], fillFile + 'Population_19_60_74.csv', sep=';')
+# addColumn(fillFile + 'Population_19_60_74.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 60-74 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 75 - 89 Tout :
+# generateCsvFile(dataFile, [0,7], fillFile + 'Population_19_75_89.csv', sep=';')
+# addColumn(fillFile + 'Population_19_75_89.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 75-89 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 90 - Plus Tout :
+# generateCsvFile(dataFile, [0,8], fillFile + 'Population_19_90_plus.csv', sep=';')
+# addColumn(fillFile + 'Population_19_90_plus.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 90 ans ou plus en 2019", "2019", ""], ';')
 
 
-# # For Population 13
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,toindex('DB')],'./csv/fill/Population_13.csv',sep=';')
+######################################## Homme en 2019 #################################
+    # # For Population 2019 Homme:
+# generateCsvFile(dataFile ,[0,9], fillFile + 'Population_19_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes en 2019", "2019", ""], ';')
 
-# # For Population 08
-# generateCsvFile('./csv/vrg/dossier_complet.csv',[0,209],'./csv/fill/Population_08.csv',sep=';')
-# addColumn('./csv/fill/Population_08.csv',["indicat","cat"],[1,3],["pupulation","2008"],';')
+    # # For Population 19 0 - 14 Homme :
+# generateCsvFile(dataFile, [0,10], fillFile + 'Population_19_00_14_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_00_14_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 0-14 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 15 - 29 Homme :
+# generateCsvFile(dataFile, [0,11], fillFile + 'Population_19_15_29_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_15_29_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 15-29 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 30 - 44 Homme :
+# generateCsvFile(dataFile, [0,12], fillFile + 'Population_19_30_44_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_30_44_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 30-44 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 45 - 59 Homme :
+# generateCsvFile(dataFile, [0,13], fillFile + 'Population_19_45_59_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_45_59_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 45-59 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 60 - 74 Homme :
+# generateCsvFile(dataFile, [0,14], fillFile + 'Population_19_60_74_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_60_74_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 60-74 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 75 - 89 Homme :
+# generateCsvFile(dataFile, [0,15], fillFile + 'Population_19_75_89_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_75_89_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 75-89 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 90 - Plus Homme :
+# generateCsvFile(dataFile, [0,16], fillFile + 'Population_19_90_plus_H.csv', sep=';')
+# addColumn(fillFile + 'Population_19_90_plus_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 90 ans ou plus en 2019", "2019", ""], ';')
+
+######################################## Femme en 2019 #################################
+# # For Population 2019 Femme:
+# generateCsvFile(dataFile, [0,20], fillFile + 'Population_19_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes en 2019", "2019", ""], ';')
+
+    # # For Population 2019 0 - 14 Femme :
+# generateCsvFile(dataFile, [0,21], fillFile + 'Population_19_00_14_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_00_14_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 0-14 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 15 - 29 Femme :
+# generateCsvFile(dataFile, [0,22], fillFile + 'Population_19_15_29_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_15_29_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 15-29 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 30 - 44 Femme :
+# generateCsvFile(dataFile, [0,23], fillFile + 'Population_19_30_44_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_30_44_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 30-44 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 45 - 59 Femme :
+# generateCsvFile(dataFile, [0,24], fillFile + 'Population_19_45_59_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_45_59_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 45-59 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 60 - 74 Femme :
+# generateCsvFile(dataFile, [0,25], fillFile + 'Population_19_60_74_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_60_74_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 60-74 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 75 - 89 Femme :
+# generateCsvFile(dataFile, [0,26], fillFile + 'Population_19_75_89_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_75_89_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 75-89 ans en 2019", "2019", ""], ';')
+
+    # # For Population 2019 90 - Plus Femme :
+# generateCsvFile(dataFile, [0,27], fillFile + 'Population_19_90_plus_F.csv', sep=';')
+# addColumn(fillFile + 'Population_19_90_plus_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 90 ans ou plus en 2019", "2019", ""], ';')
+
+#################################### 2013 ############################################
+# # For Population 2013 Tout:
+# generateCsvFile(dataFile, [0,105], fillFile + 'Population_13.csv', sep=';')
+# addColumn(fillFile + 'Population_13.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Population en 2013", "2013", ""], ';')
+
+    # # For Population 2013 0 - 14 Tout :
+# generateCsvFile(dataFile, [0,106], fillFile + 'Population_13_00_14.csv', sep=';')
+# addColumn(fillFile + 'Population_13_00_14.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 0-14 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 15 - 29 Tout :
+# generateCsvFile(dataFile, [0,107], fillFile + 'Population_13_15_29.csv', sep=';')
+# addColumn(fillFile + 'Population_13_15_29.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 15-29 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 30 - 44 Tout :
+# generateCsvFile(dataFile, [0,108], fillFile + 'Population_13_30_44.csv', sep=';')
+# addColumn(fillFile + 'Population_13_30_44.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 30-44 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 45 - 59 Tout :
+# generateCsvFile(dataFile, [0,109], fillFile + 'Population_13_45_59.csv', sep=';')
+# addColumn(fillFile + 'Population_13_45_59.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 45-59 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 60 - 74 Tout :
+# generateCsvFile(dataFile, [0,110], fillFile + 'Population_13_60_74.csv', sep=';')
+# addColumn(fillFile + 'Population_13_60_74.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 60-74 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 75 - 89 Tout :
+# generateCsvFile(dataFile, [0,111], fillFile + 'Population_13_75_89.csv', sep=';')
+# addColumn(fillFile + 'Population_13_75_89.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 75-89 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 90 - Plus Tout :
+# generateCsvFile(dataFile, [0,112], fillFile + 'Population_13_90_plus.csv', sep=';')
+# addColumn(fillFile + 'Population_13_90_plus.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 90 ans ou plus en 2013", "2013", ""], ';')
+
+######################################## Homme en 2013 #################################
+    # # For Population 2013 Homme:
+# generateCsvFile(dataFile, [0,113], fillFile + 'Population_13_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes en 2013", "2013", ""], ';')
+
+    # # For Population 2013 0 - 14 Homme :
+# generateCsvFile(dataFile, [0,114], fillFile + 'Population_13_00_14_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_00_14_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 0-14 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 15 - 29 Homme :
+# generateCsvFile(dataFile, [0,115], fillFile + 'Population_13_15_29_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_15_29_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 15-29 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 30 - 44 Homme :
+# generateCsvFile(dataFile, [0,116], fillFile + 'Population_13_30_44_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_30_44_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 30-44 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 45 - 59 Homme :
+# generateCsvFile(dataFile, [0,117], fillFile + 'Population_13_45_59_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_45_59_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 45-59 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 60 - 74 Homme :
+# generateCsvFile(dataFile, [0,118], fillFile + 'Population_13_60_74_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_60_74_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 60-74 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 75 - 89 Homme :
+# generateCsvFile(dataFile, [0,119], fillFile + 'Population_13_75_89_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_75_89_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 75-89 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 90 - Plus Homme :
+# generateCsvFile(dataFile, [0,120], fillFile + 'Population_13_90_plus_H.csv', sep=';')
+# addColumn(fillFile + 'Population_13_90_plus_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 90 ans ou plus en 2013", "2013", ""], ';')
+
+######################################## Femme en 2013 #################################
+    # # For Population 2013 Femme:
+# generateCsvFile(dataFile, [0,124], fillFile + 'Population_13_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes en 2013", "2013", ""], ';')
+
+    # # For Population 2013 0 - 14 Femme :
+# generateCsvFile(dataFile, [0,125], fillFile + 'Population_13_00_14_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_00_14_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 0-14 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 15 - 29 Femme :
+# generateCsvFile(dataFile, [0,126], fillFile + 'Population_13_15_29_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_15_29_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 15-29 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 30 - 44 Femme :
+# generateCsvFile(dataFile, [0,127], fillFile + 'Population_13_30_44_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_30_44_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 30-44 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 45 - 59 Femme :
+# generateCsvFile(dataFile, [0,128], fillFile + 'Population_13_45_59_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_45_59_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 45-59 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 60 - 74 Femme :
+# generateCsvFile(dataFile, [0,129], fillFile + 'Population_13_60_74_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_60_74_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 60-74 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 75 - 89 Femme :
+# generateCsvFile(dataFile, [0,130], fillFile + 'Population_13_75_89_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_75_89_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 75-89 ans en 2013", "2013", ""], ';')
+
+    # # For Population 2013 90 - Plus Femme :
+# generateCsvFile(dataFile, [0,131], fillFile + 'Population_13_90_plus_F.csv', sep=';')
+# addColumn(fillFile + 'Population_13_90_plus_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 90 ans ou plus en 2013", "2013", ""], ';')
+
+#################################### 2008 ############################################
+    # # For Population 2008 Tout:
+# generateCsvFile(dataFile, [0,209], fillFile + 'Population_08.csv', sep=';')
+# addColumn(fillFile + 'Population_08.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Population en 2008", "2008", ""], ';')
+
+    # # For Population 2008 0 - 14 Tout :
+# generateCsvFile(dataFile, [0,210], fillFile + 'Population_08_00_14.csv', sep=';')
+# addColumn(fillFile + 'Population_08_00_14.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 0-14 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 15 - 29 Tout :
+# generateCsvFile(dataFile, [0,211], fillFile + 'Population_08_15_29.csv', sep=';')
+# addColumn(fillFile + 'Population_08_15_29.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 15-29 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 30 - 44 Tout :
+# generateCsvFile(dataFile, [0,212], fillFile + 'Population_08_30_44.csv', sep=';')
+# addColumn(fillFile + 'Population_08_30_44.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 30-44 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 45 - 59 Tout :
+# generateCsvFile(dataFile, [0,213], fillFile + 'Population_08_45_59.csv', sep=';')
+# addColumn(fillFile + 'Population_08_45_59.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 45-59 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 60 - 74 Tout :
+# generateCsvFile(dataFile, [0,214], fillFile + 'Population_08_60_74.csv', sep=';')
+# addColumn(fillFile + 'Population_08_60_74.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 60-74 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 75 - plus Tout :
+# generateCsvFile(dataFile, [0,215], fillFile + 'Population_08_75_plus.csv', sep=';')
+# addColumn(fillFile + 'Population_08_75_plus.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop 75 ans ou plus en 2008", "2008", ""], ';')
+
+    # # For Population 2008 90 - Plus Tout :
+
+######################################## Homme en 2008 #################################
+    # # For Population 2008 Homme:
+# generateCsvFile(dataFile, [0,216], fillFile + 'Population_08_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes en 2008", "2008", ""], ';')
+
+    # # For Population 2008 0 - 14 Homme :
+# generateCsvFile(dataFile, [0,217], fillFile + 'Population_08_00_14_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_00_14_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 0-14 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 15 - 29 Homme :
+# generateCsvFile(dataFile, [0,218], fillFile + 'Population_08_15_29_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_15_29_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 15-29 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 30 - 44 Homme :
+# generateCsvFile(dataFile, [0,219], fillFile + 'Population_08_30_44_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_30_44_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 30-44 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 45 - 59 Homme :
+# generateCsvFile(dataFile, [0,220], fillFile + 'Population_08_45_59_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_45_59_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 45-59 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 60 - 74 Homme :
+# generateCsvFile(dataFile, [0,221], fillFile + 'Population_08_60_74_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_60_74_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 60-74 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 75 - 89 Homme :
+# generateCsvFile(dataFile, [0,222], fillFile + 'Population_08_75_89_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_75_89_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 75-89 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 90 - Plus Homme :
+# generateCsvFile(dataFile, [0,223], fillFile + 'Population_08_90_plus_H.csv', sep=';')
+# addColumn(fillFile + 'Population_08_90_plus_H.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Hommes 90 ans ou plus en 2008", "2008", ""], ';')
+
+######################################## Femme en 2008 #################################
+    # # For Population 2008 Femme:
+# generateCsvFile(dataFile, [0,227], fillFile + 'Population_08_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes en 2008", "2008", ""], ';')
+
+    # # For Population 2008 0 - 14 Femme :
+# generateCsvFile(dataFile, [0,228], fillFile + 'Population_08_00_14_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_00_14_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 0-14 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 15 - 29 Femme :
+# generateCsvFile(dataFile, [0,229], fillFile + 'Population_08_15_29_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_15_29_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 15-29 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 30 - 44 Femme :
+# generateCsvFile(dataFile, [0,230], fillFile + 'Population_08_30_44_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_30_44_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 30-44 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 45 - 59 Femme :
+# generateCsvFile(dataFile, [0,231], fillFile + 'Population_08_45_59_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_45_59_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 45-59 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 60 - 74 Femme :
+# generateCsvFile(dataFile, [0,232], fillFile + 'Population_08_60_74_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_60_74_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 60-74 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 75 - 89 Femme :
+# generateCsvFile(dataFile, [0,233], fillFile + 'Population_08_75_89_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_75_89_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 75-89 ans en 2008", "2008", ""], ';')
+
+    # # For Population 2008 90 - Plus Femme :
+# generateCsvFile(dataFile, [0,234], fillFile + 'Population_08_90_plus_F.csv', sep=';')
+# addColumn(fillFile + 'Population_08_90_plus_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 90 ans ou plus en 2008", "2008", ""], ';')
+
+# # # Naissance
+## ...................
 
 # # # TESTS : 
