@@ -368,7 +368,68 @@ fillFile = './csv/fill/'
 # generateCsvFile(dataFile, [0,234], fillFile + 'Population_08_90_plus_F.csv', sep=';')
 # addColumn(fillFile + 'Population_08_90_plus_F.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Population", "Pop Femmes 90 ans ou plus en 2008", "2008", ""], ';')
 
-# # # Naissance
+######################################## Naissances #################################
+    # # # Naissance 2013 - 2019
+# generateCsvFile(dataFile, [0,1501], fillFile + 'Naissances_13_19.csv', sep=';')
+# addColumn(fillFile + 'Naissances_13_19.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 2013 et 2019", "2013", "2019"], ';')
+
+    # # # Naissance 2008 - 2013
+# generateCsvFile(dataFile, [0,1502], fillFile + 'Naissances_08_13.csv', sep=';')
+# addColumn(fillFile + 'Naissances_08_13.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 2008 et 2013", "2008", "2013"], ';')
+
+    # # # Naissance 1999 - 2008
+# generateCsvFile(dataFile, [0,1503], fillFile + 'Naissances_99_08.csv', sep=';')
+# addColumn(fillFile + 'Naissances_99_08.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 1999 et 2008", "1999", "2008"], ';')
+
+    # # # Naissance 1990 - 1999
+# generateCsvFile(dataFile, [0,1504], fillFile + 'Naissances_90_99.csv', sep=';')
+# addColumn(fillFile + 'Naissances_90_99.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 1990 et 1999", "1990", "1999"], ';')
+
+    # # # Naissance 1982 - 1990
+# generateCsvFile(dataFile, [0,1505], fillFile + 'Naissances_82_90.csv', sep=';')
+# addColumn(fillFile + 'Naissances_82_90.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 1982 et 1990", "1982", "1990"], ';')
+
+    # # # Naissance 1975 - 1982
+# generateCsvFile(dataFile, [0,1506], fillFile + 'Naissances_75_82.csv', sep=';')
+# addColumn(fillFile + 'Naissances_75_82.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 1975 et 1982", "1975", "1982"], ';')
+
+    # # # Naissance 1968 - 1975
+# generateCsvFile(dataFile, [0,1507], fillFile + 'Naissances_68_75.csv', sep=';')
+# addColumn(fillFile + 'Naissances_68_75.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances entre 1968 et 1975", "1968", "1975"], ';')
+
+######################################## Naissances Domiciliées #################################
+    # # # Naissance 2014
+# generateCsvFile(dataFile, [0,1540], fillFile + 'Naissances_domiliees_14.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_14.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2014", "2014", ""], ';')
+
+    # # # Naissance 2015
+# generateCsvFile(dataFile, [0,1541], fillFile + 'Naissances_domiliees_15.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_15.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2015", "2015", ""], ';')
+
+    # # # Naissance 2016
+# generateCsvFile(dataFile, [0,1542], fillFile + 'Naissances_domiliees_16.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_16.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2016", "2016", ""], ';')
+
+    # # # Naissance 2017
+# generateCsvFile(dataFile, [0,1543], fillFile + 'Naissances_domiliees_17.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_17.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2017", "2017", ""], ';')
+
+    # # # Naissance 2018
+# generateCsvFile(dataFile, [0,1544], fillFile + 'Naissances_domiliees_18.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_18.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2018", "2018", ""], ';')
+
+    # # # Naissance 2019
+# generateCsvFile(dataFile, [0,1545], fillFile + 'Naissances_domiliees_19.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_19.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2019", "2019", ""], ';')
+
+    # # # Naissance 2020
+# generateCsvFile(dataFile, [0,1546], fillFile + 'Naissances_domiliees_20.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_20.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2020", "2020", ""], ';')
+
+    # # # Naissance 2021
+# generateCsvFile(dataFile, [0,1547], fillFile + 'Naissances_domiliees_21.csv', sep=';')
+# addColumn(fillFile + 'Naissances_domiliees_21.csv', ['indicator', 'category', 'startyear', 'endyear'], [1,2,3,4], ["Naissances", "Naissances domiciliées en 2021", "2021", ""], ';')
+
 ## ...................
 
 # # # TESTS : 
