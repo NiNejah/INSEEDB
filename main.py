@@ -1,5 +1,5 @@
-from config import *
-
+from tools.insert import *
+from tools.color import color 
 import psycopg2
 import psycopg2.extras 
 import csv 
@@ -12,47 +12,44 @@ def connect(dbName , userName , Pass):
         conn = psycopg2.connect("host=localhost dbname="+dbName+" user="+userName+" password="+Pass)
         return conn ; 
     except Exception as e :
-        exit("Connexion impossible à la base de données: " + str(e)) 
-
-def fillTable(file, table, cur, columns, sep=';'):
-    with open(file, 'r') as csvfile:
-        try :
-            cur.copy_from(csvfile, table, sep=sep, columns=columns)
-        except Exception as e : 
-            exit("copy_from exception : " + str(e))
+        exit(color.RED +"Connexion impossible à la base de données: " + str(e) +color.END) 
 
 def sqlRequest(conn, cur, cmd):
     try:
-        cur.execute("""
+        cur.execute("""from tools.config import *
         %s
         """,(cmd))
     except Exception as e :
         #fermeture de la connexion
         cur.close()
         conn.close()
-        exit("error when try to get : "+cmd + " e : " + str(e))
+        exit(color.RED +"error when try to get : "+cmd + " e : " + str(e)+color.END)
  
-def toString(rows , rosName):
-    page = rosName[0] + ' | '+ rosName[1] + '\n'
+def toString(rows , rowsName):
+    page ='\n'
+    for r in rowsName : 
+        page += f'{r:15} |'
+    page = page[:-1] + '\n'
+    for i in range (len(rowsName)):
+        page += "----------------|"
+    page = page[:-1] + '\n'
     for d in rows :
-        page += str(d[rosName[0]])+" : "+str(d[rosName[1]])+"\n"
+        for r in rowsName :
+            s = str(d[r])
+            page += f'{s:15} |'
+        page = page[:-1] + '\n'
     return page
 
 if __name__ == "__main__" :
-    print ("welcome to postState ...")
+    print ("\033[93mWelcome to postState ")
     conn = connect(DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    fillTable('./csv/fill_region.csv',"region",cur,['idregion' , 'nomregion'],sep=',')
-    cur.execute("select * from region;")
+    filleScript(cur)
+    cur.execute("select * from Region;")
     rows = cur.fetchall()
-    res = toString(rows,['idregion','nomregion'])
-    print(res)
-    fillTable('./csv/fill_region_chef.csv',"regioncheflieu",cur,['idregion' , 'idcommune'],sep=',')
-    cur.execute("select * from regioncheflieu;")
-    rows = cur.fetchall()
-    res = toString(rows,['idregion','idcommune'])
-    print(res)
-
-
-
-
+    res = toString(rows,getLower(TABLE_COLUMNS['Region']))
+    print(color.GREEN+res+color.END)
+    # cur.execute("select * from commune;")
+    # rows = cur.fetchall()
+    # res = toString(rows,getLower(TABLE_COLUMNS['Commune']))
+    # print(color.GREEN+res+color.END)

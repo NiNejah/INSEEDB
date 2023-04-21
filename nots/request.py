@@ -81,7 +81,18 @@ def insertRegionChefLieu(conn, cur, IdCommune, IdRegion):
         conn.close()
         exit("error when try to insert RegionChefLieu : (IdCommune  = " + IdCommune + ", IdRegion = " + IdRegion) 
     
-
+def sqlRequest(conn, cur, cmd):
+    print ("RegionChefLieu insertion : ")
+    try:
+        cur.execute("""
+        %s
+        """,(cmd))
+    except Exception as e :
+        #fermeture de la connexion
+        cur.close()
+        conn.close()
+        exit("error when try to get : "+cmd) 
+    
 if __name__ == "__main__" : 
     print ("welcome to postState ...")
     conn = connect(DBNAME,USERNAME,PASS)
