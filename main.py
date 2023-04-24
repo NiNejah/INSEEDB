@@ -9,18 +9,24 @@ def _optionRegion(cur):
         from Region;'
     # selectAndDisplay(cur,req,['code_de_region','region'], "Region list" )
     regionList = makeListFromRequest(cur,req,'region')
+    year = ['2008','2013','2019']
     while True : 
-        user = getChoice("\t\t  ... Region menu ... " , ['Go to Main menu ','List all region','List departments of...'])
+        user = getChoice("\t\t  ... Region menu ... " , ['Go to Main menu ','List all region','The Most Populated Region','The Least Populated Region','List departments of...'])
         if user == 1 :
             return 
         elif user == 2 :
             selectAndDisplay(cur,req,['code_de_region','region'], "Region list" )
-        elif user == 3 :
+        elif user == 3 : 
+            yearCh =  getChoice ("Please choose a year : ",year)
+            getMostLeastRegion(cur,year[yearCh-1],True)
+        elif user == 4 : 
+            yearCh =  getChoice ("Please choose a year : ",year)
+            getMostLeastRegion(cur,year[yearCh-1],False)
+        elif user == 5 :
             rId = getChoice ("Please choose a Region form this list : ",regionList)
             getDeptOfRegion(cur,regionList[rId-1])
 
 def _optionDepartement(cur):
-    creatDeptView(cur)
     req = f'SELECT IdDepartement as code_de_departement, NameDepartement as departement \
         from Departement;'
     # selectAndDisplay(cur,req,['code_de_region','region'], "Region list" )
@@ -53,7 +59,8 @@ if __name__ == "__main__" :
     conn = connect(DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     # insertAll(conn , cur)
-
+    creatDeptView(cur)
+    creatRegionView(cur)
     while True :
         user = getChoice("\t\t  ... Main menu ... " , ['exit','Region','Department'])
         if user == 1:

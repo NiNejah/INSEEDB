@@ -60,6 +60,17 @@ def creatDeptView(cur):
         GROUP BY Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear;"
     sqlRequest(cur,req)
 
+def creatRegionView(cur):
+    req = f"CREATE OR REPLACE VIEW PopRegion AS \
+        SELECT Region.IdRegion, Region.NameRegion, Statistic.StartYear, SUM(Statistic.StatValue) as Population \
+        FROM Departement \
+            JOIN Region ON Region.IdRegion = Departement.IdRegion \
+            JOIN Commune ON Departement.IdDepartement = Commune.IdDepartement \
+            JOIN Statistic ON Statistic.CodeCommune = Commune.CodeCommune \
+        WHERE Statistic.Indicator = 'Population' \
+        AND Statistic.Category LIKE 'Population en %' \
+        GROUP BY Region.IdRegion, Region.NameRegion, Statistic.StartYear;"
+    sqlRequest(cur,req)
 
 def getDeptOfRegion(cur,name):
     req = f"SELECT IdDepartement as code_de_departement ,NameDepartement as departement  \
@@ -92,3 +103,16 @@ def getMostLeastDept(cur,year,most):
         req += "ORDER BY Population ASC LIMIT 1"
         title  = "The Least Populated Departement "
     selectAndDisplay(cur,req,['code_department','departement','population'], title )
+
+
+def getMostLeastRegion(cur,year,most):
+    req = f"SELECT IdRegion as code_region, NameRegion as region, population FROM PopRegion \
+            WHERE StartYear = {year}"
+    title = ''
+    if(most):
+        req += "ORDER BY Population DESC LIMIT 1"
+        title  = "The Most Populated Region "
+    else :
+        req += "ORDER BY Population ASC LIMIT 1"
+        title  = "The Least Populated Region "
+    selectAndDisplay(cur,req,['code_region','region','population'], title )
