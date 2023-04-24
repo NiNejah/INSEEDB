@@ -63,7 +63,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-
+-- test call
 CALL CalculateRegionPopulation(2019);
 
 select * from Region;
