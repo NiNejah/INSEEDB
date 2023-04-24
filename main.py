@@ -58,9 +58,13 @@ if __name__ == "__main__" :
     printCheers("\t\t>>>>> Welcome to postState <<<<<")
     conn = connect(DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
-    # insertAll(conn , cur)
+    insertAll(conn , cur)
+    # Vues : 
     creatDeptView(cur)
     creatRegionView(cur)
+
+    # stored procedure 
+
     while True :
         user = getChoice("\t\t  ... Main menu ... " , ['exit','Region','Department'])
         if user == 1:

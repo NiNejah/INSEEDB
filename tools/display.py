@@ -46,7 +46,7 @@ def getChoice(befformess, choices):
       except Exception as e :
          continue
       if not (userCh > 0 and userCh <= len(choices)):
-         printWarning("unvalid choice, valid choices (1 to "+str(len(choices))+')')
+         printWarning("Invalid choice, possible choices (1 to "+str(len(choices))+')')
       else :
          break
    return userCh

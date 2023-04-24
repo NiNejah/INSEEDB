@@ -3,16 +3,6 @@ from typing import List, Union
 import os
 import csv
 
-def toindex(col_header):
-    """
-    Converts a string column header into its corresponding index number.
-    """
-    col_header = col_header.upper()  # Convert to uppercase
-    index = 0
-    for i, char in enumerate(reversed(col_header)):
-        index += (ord(char) - 64) * (26 ** i)
-    return index - 1
-
 
 def generateCsvFile(oldCsvFilePath: str, deleteAllExceptCols: List[int], newCsvFilePath: str, sep=',', colDeleteIndex: Union[int, None] = None, notDeleteDesreption: Union[str, None] = None, deleteHeader: bool = False):
 

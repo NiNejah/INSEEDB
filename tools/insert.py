@@ -12,21 +12,8 @@ def getLower(myList:List[str]):
 
 def fillTable(file, table, cur, columns, sep=';'):
     with open(file, 'r') as csvfile:
-        try :
             cur.copy_from(csvfile, table, sep=sep, columns=columns)
-        except Exception as e : 
-            exit("\033[91mcopy_from exception : " + str(e))
 
-
-def fillPopulation2(cur):
-    year = ['_08','_13','_19']
-    sex = ['','_F','_H']
-    period = ['','_00_14','_15_29','_30_44','_45_59','_60_74','_75_89','_90_plus']
-    for y in year : 
-        for p in period :
-            for s in sex:
-                print(fileFile+'pop/Population'+y+p+s+'.csv')
-                fillTable(fileFile+'pop/Population'+y+p+s+'.csv',"statistic",cur,getLower(TABLE_COLUMNS['Statistic_POP']),sep=';')
 
 def fillPopulation(cur):
     for filename in os.listdir(fileFile+'/pop/'):
@@ -49,7 +36,7 @@ def fillStat(cur):
     fillPopulation(cur)
     fillNaissances(cur)
 
-def fillScript(conn,cur):
+def fillScript(cur):
     fillTable(fileFile+'fill_region.csv',"region",cur,getLower(TABLE_COLUMNS['Region']),sep=',')
     fillTable(fileFile+'fill_departement.csv',"departement",cur,getLower(TABLE_COLUMNS['Departement']),sep=',')
     fillTable(fileFile+'fill_commune.csv',"commune",cur,getLower(TABLE_COLUMNS['Commune']),sep=',')
@@ -57,10 +44,20 @@ def fillScript(conn,cur):
     fillTable(fileFile+'fill_departement_chefLieu.csv',"deptcheflieu",cur,getLower(TABLE_COLUMNS['DeptChefLieu']),sep=',')
     # fillTable(fileFile+'pop/test/Population_19.csv',"statistic",cur,getLower(TABLE_COLUMNS['Statistic']),sep=';')
     fillStat(cur)
-    conn.commit()
+    
 
 def insertAll(conn , cur):
-    printAction('Fill tables...')
-    printAction('please wait... ')
-    fillScript(conn,cur)
-    printAction('End fill tables')
+    try :
+        printAction('Fill tables...')
+        printAction('please wait... ')
+        fillScript(cur)
+        conn.commit()
+        printAction('End fill tables, Please commante this line : insertAll(conn , cur) in main.py')
+    except psycopg2.Error as e :
+        #fermeture de la connexion
+            if e.pgcode == '23505': # check for key violation error code
+                conn.rollback()  # rollback the transaction
+                print(color.RED +"You have already inserted all file please make sour that you commented this line : insertAll(conn,cut) in main.py")
+            else:
+                cur.close()
+                exit(color.RED+"copy_from exception : " + str(e)+color.END)
