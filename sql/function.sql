@@ -25,6 +25,7 @@ BEGIN
                 ON Commune.CodeCommune = Statistic.CodeCommune
             WHERE Commune.IdDepartement = dep.IdDepartement
             AND Indicator = 'Population'
+            AND Category LIKE 'Population en %' 
             AND StartYear = year
             AND (EndYear IS NULL OR EndYear >= year)
         )
@@ -64,5 +65,13 @@ $$ LANGUAGE plpgsql;
 
 
 CALL CalculateRegionPopulation(2019);
-select * from region;
-SELECT * FROM Departement ; 
+
+select * from Region;
+SELECT * FROM Departement ;
+
+
+ALTER TABLE Departement
+DROP COLUMN PopulationDepartement;
+
+ALTER TABLE region
+DROP COLUMN PopulationRegion;
