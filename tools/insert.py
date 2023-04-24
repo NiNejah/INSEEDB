@@ -58,3 +58,9 @@ def fillScript(conn,cur):
     # fillTable(fileFile+'pop/test/Population_19.csv',"statistic",cur,getLower(TABLE_COLUMNS['Statistic']),sep=';')
     fillStat(cur)
     conn.commit()
+
+def insertAll(conn , cur):
+    printAction('Fill tables...')
+    printAction('please wait... ')
+    fillScript(conn,cur)
+    printAction('End fill tables')

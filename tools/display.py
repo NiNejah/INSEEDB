@@ -23,12 +23,12 @@ def tableToString(rows , rowsName):
         page += f'{r:25} |'
     page = page[:-1] + '\n'
     for i in range (len(rowsName)):
-        page += "----------------|"
+        page += "--------------------------|"
     page = page[:-1] + '\n'
     for d in rows :
         for r in rowsName :
             s = str(d[r])
-            page += f'{s:15} |'
+            page += f'{s:25} |'
         page = page[:-1] + '\n'
     return page
 
@@ -38,10 +38,13 @@ def printCheers(mess):
 def getChoice(befformess, choices):
    ch = color.YELLOW+befformess+'\n'
    for i in range (len(choices)):
-      ch += str(i+1) +' - ' + choices[i] + '\n'
+      ch += f"{(i+1):3}  -  {choices[i]} \n"
    print (ch+'\n' + color.END)
    while True :
-      userCh = int(input (f"Enter your choice please (1 -> {len(choices)}) : "))
+      try :
+         userCh = int(input (f"Enter your choice please (1 -> {len(choices)}) : "))
+      except Exception as e :
+         continue
       if not (userCh > 0 and userCh <= len(choices)):
          printWarning("unvalid choice, valid choices (1 to "+str(len(choices))+')')
       else :
