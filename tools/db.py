@@ -31,7 +31,7 @@ def sqlRequest(cur, cmd):
     except Exception as e :
         #fermeture de la connexion
         cur.close()
-        exit(color.RED +"Error when try to get "+cmd + ": \n" + str(e)+color.END)
+        exit(color.RED +"Error when try to get "+ cmd +": \n" + str(e)+color.END)
 
 def selectAndDisplay(cur,request,columns,description = ''):
     print (color.GREEN +"\n\t\t... "+description+" ... ")
@@ -50,6 +50,14 @@ def makeListFromRequest(cur,request,column):
 
 
 
+###################  Region ###################
+
+def getDeptOfRegion(cur,name):
+    req = f"SELECT IdDepartement as code_de_departement ,NameDepartement as departement  \
+        FROM Region \
+        INNER JOIN Departement ON Region.IdRegion = Departement.IdRegion \
+        WHERE Region.NameRegion = '{name}' ;"
+    selectAndDisplay(cur,req,['code_de_departement','departement'],("All Departement of "+name))
 
 def creatRegionView(cur):
     req = f"CREATE OR REPLACE VIEW PopRegion AS \
@@ -75,27 +83,13 @@ def getMostLeastRegion(cur,year,most):
         title  = "The Least Populated Region "
     selectAndDisplay(cur,req,['code_region','region','population'], title )
 
-def getDeptOfRegion(cur,name):
-    req = f"SELECT IdDepartement as code_de_departement ,NameDepartement as departement  \
-        FROM Region \
-        INNER JOIN Departement ON Region.IdRegion = Departement.IdRegion \
-        WHERE Region.NameRegion = '{name}' ;"
-    selectAndDisplay(cur,req,['code_de_departement','departement'],("All Departement of "+name))
 
 
 
 
 
-def creatDeptView(cur):
-    req = f"CREATE OR REPLACE VIEW PopDepartement AS \
-        SELECT Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear, SUM(Statistic.StatValue) as Population \
-        FROM Statistic \
-            JOIN Commune on Commune.CodeCommune = statistic.CodeCommune \
-            JOIN Departement on Commune.IdDepartement = Departement.IdDepartement \
-        WHERE Statistic.Indicator = 'Population' \
-        AND Statistic.Category LIKE 'Population en %' \
-        GROUP BY Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear;"
-    sqlRequest(cur,req)
+
+################### Departement ###################
 
 def getCommuneOfDept(cur,IdDept,NameDept,minPop,year):
     req = f"SELECT Commune.NameCommune as commune , Statistic.StatValue as population \
@@ -108,6 +102,17 @@ def getCommuneOfDept(cur,IdDept,NameDept,minPop,year):
         AND EndYear IS NULL \
         AND Statistic.StatValue >= {minPop};"
     selectAndDisplay(cur,req,['commune','population'], "Populasion of "+NameDept )
+
+def creatDeptView(cur):
+    req = f"CREATE OR REPLACE VIEW PopDepartement AS \
+        SELECT Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear, SUM(Statistic.StatValue) as Population \
+        FROM Statistic \
+            JOIN Commune on Commune.CodeCommune = statistic.CodeCommune \
+            JOIN Departement on Commune.IdDepartement = Departement.IdDepartement \
+        WHERE Statistic.Indicator = 'Population' \
+        AND Statistic.Category LIKE 'Population en %' \
+        GROUP BY Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear;"
+    sqlRequest(cur,req)
 
 def getMostLeastDept(cur,year,most):
     req = f"SELECT IdDepartement as code_department, NameDepartement as departement, population FROM PopDepartement \

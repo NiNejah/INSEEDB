@@ -14,3 +14,63 @@ CREATE TABLE Statistic (
     CONSTRAINT valid_start_year CHECK (StartYear >= 1900),
     CONSTRAINT valid_end_year CHECK (EndYear IS NULL OR EndYear >= StartYear)
 );
+
+
+insert into Region( IdRegion , NameRegion ) values (1,'Region1');
+insert into Region( IdRegion , NameRegion ) values (2,'Region2');
+insert into Departement (IdDepartement , NameDepartement , IdRegion ) values ('01','Departement1',1);
+insert into Departement (IdDepartement , NameDepartement , IdRegion ) values ('02','Departement2',1);
+insert into Departement (IdDepartement , NameDepartement , IdRegion ) values ('03','Departement3',2);
+insert into Departement (IdDepartement , NameDepartement , IdRegion ) values ('04','Departement4',2);
+insert into Departement (IdDepartement , NameDepartement , IdRegion ) values ('05','Departement5',1);
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01001','Commune1','01');
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01002','Commune2','01');
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01003','Commune3','02');
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01004','Commune4','02');
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01005','Commune5','03');
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01006','Commune6','04');
+insert into Commune (CodeCommune, NameCommune, IdDepartement) values ('01007','Commune8','05');
+insert into DeptChefLieu (CodeCommune,IdDepartement) values ('01001', '01');
+insert into DeptChefLieu (CodeCommune,IdDepartement) values ('01003','02');
+insert into DeptChefLieu (CodeCommune,IdDepartement) values ('01005','03');
+insert into DeptChefLieu (CodeCommune,IdDepartement) values ('01006','04');
+insert into DeptChefLieu (CodeCommune,IdDepartement) values ('01007','05');
+insert into RegionChefLieu (CodeCommune, IdRegion) values ('01003',1);
+insert into RegionChefLieu (CodeCommune, IdRegion) values ('01005',2);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01001','Population','2019',2019,NULL,10000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01007','Population','2019',2019,NULL,5000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01007','Population','2019',2019,NULL,1000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01005','Population','2019',2019,NULL,5000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01002','Population','2019',2019,NULL,6000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01004','Population','2019',2019,NULL,8000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01003','Population','2019',2019,NULL,100);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01002','Population','Homme',2019,NULL,4000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01005','Population','2013',2013,NULL,20000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01006','Population',StatValue'2013',2013,NULL,1000);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01003','Population','0-14 ans',2013,NULL,2500);
+
+insert into Statistic (CodeCommune,Indicator,Category,StartYear,EndYear,StatValue) 
+values ('01002','Naissances','entre 1975 et 1982',1975,1982,1250);
+
