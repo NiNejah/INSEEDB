@@ -42,8 +42,8 @@ CREATE TABLE Statistic (
     Indicator VARCHAR(50),
     Category VARCHAR(100),
     StartYear INT,
-    EndYear INT,
-    StatValue INT,
+    EndYear INT NULL,
+    StatValue FLOAT,
     -- Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (CodeCommune, Indicator, Category, StartYear, EndYear)
 );
