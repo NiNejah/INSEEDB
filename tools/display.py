@@ -1,3 +1,4 @@
+
 class color:
    PURPLE = '\033[95m'
    CYAN = '\033[96m'
@@ -11,12 +12,18 @@ class color:
    END = '\033[0m'
 
 
-def printAction(mess):
+def printAction(mess:str):
    print(color.DARKCYAN+mess+color.END)
 
 def printWarning(mess):
    print(color.RED+mess+color.END)
 
+def printCheers(mess):
+   print (color.YELLOW+mess+color.END)
+
+# This function takes a list of dictionaries and a list of strings as input, 
+# representing the rows of a table and the names of the columns, respectively. 
+# It converts the table to a string representation and returns it.
 def tableToString(rows , rowsName):
     page ='\n'
     for r in rowsName : 
@@ -32,11 +39,12 @@ def tableToString(rows , rowsName):
         page = page[:-1] + '\n'
     return page
 
-def printCheers(mess):
-   print (color.YELLOW+mess+color.END)
-
-def getChoice(befformess, choices):
-   ch = color.YELLOW+befformess+'\n'
+# This function takes a message and a list of strings as input, 
+# representing the prompt message and the available choices, respectively. 
+# It prints the message and the choices in yellow color, then prompts the user to enter their choice. 
+# It returns the user's choice as an integer.
+def getChoice(title, choices):
+   ch = color.YELLOW+title+'\n'
    for i in range (len(choices)):
       ch += f"{(i+1):3}  -  {choices[i]} \n"
    print (ch+'\n' + color.END)
