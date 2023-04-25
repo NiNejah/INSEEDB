@@ -1,5 +1,6 @@
 from tools.insert import *
 from tools.display import *
+from tools.dbConfig import * 
 import psycopg2
 import psycopg2.extras 
 
@@ -70,29 +71,21 @@ if __name__ == "__main__" :
     printCheers("\t\t>>>>> Welcome to postState <<<<<")
     conn = connect(DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
+    ## uncomment this line if you don't have already all the tables
+    # creatDB(conn,cur)
+    ## uncomment this line after the first execution    
     # insertAll(conn , cur)
     # Vues : 
-    creatPopDeptView(cur)
-    creatPopRegionView(cur)
-    creatNaissancesDeptView(cur)
-    creatNaissancesRegionView(cur)
-
+    creatViews(cur)
     while True :
         user = getChoice("\t\t  ... Main menu ... " , ['exit','Region','Department'])
         if user == 1:
             printCheers("\nGoodbye thank you for using our postState app...")
             break
         if user == 2:
-           _optionRegion(cur)
+           _optionRegion(cur)   
         elif user == 3 :
             _optionDepartement(cur)
         elif user == 4 : 
             pass
-        
-        
-    # selectAndDisplay(cur,"select * from DeptChefLieu;",getLower(TABLE_COLUMNS['DeptChefLieu']))
-
-    # selectAndDisplay(cur,"select * from Statistic;",getLower(TABLE_COLUMNS['Statistic_POP']), "Statistic Table" )
-
-    # selectAndDisplay(cur,"select * from DeptChefLieu;",getLower(TABLE_COLUMNS['DeptChefLieu']))
 

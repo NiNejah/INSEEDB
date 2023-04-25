@@ -1,6 +1,17 @@
 import os
 from tools.db import *
 
+# For the code refactoring.
+TABLE_COLUMNS = {
+    'Region' : ['IdRegion' , 'NameRegion'],
+    'Departement': ['IdDepartement','IdRegion','NameDepartement'],
+    'Commune' : ['CodeCommune','IdDepartement','NameCommune'],
+    'RegionChefLieu' :  ['IdRegion','CodeCommune'],
+    'DeptChefLieu' :  ['IdDepartement','CodeCommune' ],
+    'Statistic_POP' : ['CodeCommune','Indicator','Category','StartYear','StatValue'],
+    'Statistic_NAISS' : ['CodeCommune','Indicator','Category','StartYear','EndYear','StatValue']
+}
+
 # path to the directory where the CSV files are stored
 FILE_PATH = "./csv/fill/"
 

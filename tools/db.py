@@ -1,19 +1,13 @@
 import psycopg2
 from tools.display import *
 
-DBNAME = "insee"
-USERNAME="postgres"
-PASS="1111"
 
-TABLE_COLUMNS = {
-    'Region' : ['IdRegion' , 'NameRegion'],
-    'Departement': ['IdDepartement','IdRegion','NameDepartement'],
-    'Commune' : ['CodeCommune','IdDepartement','NameCommune'],
-    'RegionChefLieu' :  ['IdRegion','CodeCommune'],
-    'DeptChefLieu' :  ['IdDepartement','CodeCommune' ],
-    'Statistic_POP' : ['CodeCommune','Indicator','Category','StartYear','StatValue'],
-    'Statistic_NAISS' : ['CodeCommune','Indicator','Category','StartYear','EndYear','StatValue']
-}
+
+def creatDB(conn, cur):
+    with open("../sql/tables", 'r') as f:
+        sql = f.read()
+        cur.execute(sql)
+        conn.commit()
 
 
 def connect(dbName , userName , Pass):
@@ -61,7 +55,12 @@ def makeListFromRequest(cur,request,column):
         res.append(l[column])
     return res
 
-
+################### Views ###################
+def creatViews(cur):
+    creatPopDeptView(cur)
+    creatPopRegionView(cur)
+    creatNaissancesDeptView(cur)
+    creatNaissancesRegionView(cur)
 
 ###################  Region ###################
 

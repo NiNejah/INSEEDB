@@ -1,9 +1,9 @@
-DROP TABLE Region cascade ; 
-DROP TABLE Departement cascade ; 
-DROP TABLE Commune cascade ; 
-DROP TABLE DeptChefLieu cascade ; 
-DROP TABLE RegionChefLieu cascade ; 
-DROP TABLE Statistic cascade ;
+-- DROP TABLE Region cascade ; 
+-- DROP TABLE Departement cascade ; 
+-- DROP TABLE Commune cascade ; 
+-- DROP TABLE DeptChefLieu cascade ; 
+-- DROP TABLE RegionChefLieu cascade ; 
+-- DROP TABLE Statistic cascade ;
 
 CREATE TABLE Region (
     IdRegion INT PRIMARY KEY,
@@ -47,10 +47,3 @@ CREATE TABLE Statistic (
     -- Timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     UNIQUE (CodeCommune, Indicator, Category, StartYear, EndYear)
 );
-
-SELECT * FROM Region ;
-SELECT * FROM Departement ; 
-SELECT * FROM Commune ; 
-SELECT * FROM DeptChefLieu ; 
-SELECT * FROM RegionChefLieu ; 
-SELECT * FROM Statistic ; 
