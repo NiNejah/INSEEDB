@@ -11,7 +11,7 @@ def _optionRegion(cur):
     regionList = makeListFromRequest(cur,req,'region')
     year = ['2008','2013','2019']
     while True : 
-        user = getChoice("\t\t  ... Region menu ... " , ['Go to Main menu ','List all region','The Most Populated Region','The Least Populated Region','List departments of...'])
+        user = getChoice("\t\t  ... Region menu ... " , ['Go to Main menu ','List all region','The Most Populated Region','The Least Populated Region','The statistics of births','List departments of...'])
         if user == 1 :
             return 
         elif user == 2 :
@@ -23,6 +23,11 @@ def _optionRegion(cur):
             yearCh =  getChoice ("Please choose a year : ",year)
             getMostLeastRegion(cur,year[yearCh-1],False)
         elif user == 5 :
+            periodList = getNaissancesPeriodsList(cur)
+            periodChoice = getChoice ("Please choose a period form this list : ",periodList)
+            strt , end = getPeriodFromCategory(periodList[periodChoice-1])
+            getNaissanceRegion(cur,strt,end)
+        elif user == 6 :
             rId = getChoice ("Please choose a Region form this list : ",regionList)
             getDeptOfRegion(cur,regionList[rId-1])
 
@@ -70,6 +75,7 @@ if __name__ == "__main__" :
     creatPopDeptView(cur)
     creatPopRegionView(cur)
     creatNaissancesDeptView(cur)
+    creatNaissancesRegionView(cur)
 
     while True :
         user = getChoice("\t\t  ... Main menu ... " , ['exit','Region','Department'])

@@ -83,8 +83,26 @@ def getMostLeastRegion(cur,year,most):
         title  = "The Least Populated Region "
     selectAndDisplay(cur,req,['code_region','region','population'], title )
 
+def creatNaissancesRegionView(cur):
+    req = f"CREATE OR REPLACE VIEW NaissRegion AS \
+        SELECT Region.IdRegion, Region.NameRegion, Statistic.StartYear, Statistic.EndYear, SUM(Statistic.StatValue) as RNaissance \
+        FROM Departement \
+            JOIN Region ON Region.IdRegion = Departement.IdRegion \
+            JOIN Commune ON Departement.IdDepartement = Commune.IdDepartement \
+            JOIN Statistic ON Statistic.CodeCommune = Commune.CodeCommune \
+        WHERE Statistic.Indicator = 'Naissances' \
+        AND Statistic.Category LIKE 'Naissances entre %' \
+        GROUP BY Region.IdRegion, Region.NameRegion, Statistic.StartYear, Statistic.EndYear;"
+    sqlRequest(cur,req)
+  
 
-
+def getNaissanceRegion(cur,startYear,endYear):
+    req = f"SELECT NameRegion as region , SUM(RNaissance) as total_naissance \
+        FROM NaissRegion \
+        WHERE StartYear = {startYear} AND EndYear = {endYear} \
+        GROUP BY region \
+        ORDER BY total_naissance DESC;"
+    selectAndDisplay(cur,req,['region','total_naissance',], f"The statistics of births in French region betwin {startYear} - {endYear} from the most to the least")
 
 
 ################### Departement ###################
@@ -132,7 +150,7 @@ def creatNaissancesDeptView(cur):
             JOIN Departement on Commune.IdDepartement = Departement.IdDepartement \
         WHERE Statistic.Indicator = 'Naissances' \
         AND Statistic.Category LIKE 'Naissances entre %' \
-        GROUP BY Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear,  Statistic.EndYear;"
+        GROUP BY Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear, Statistic.EndYear;"
     sqlRequest(cur,req)
 
 def getNaissanceDept(cur,startYear,endYear):
@@ -141,7 +159,7 @@ def getNaissanceDept(cur,startYear,endYear):
         WHERE StartYear = {startYear} AND EndYear = {endYear} \
         GROUP BY departement \
         ORDER BY total_naissance DESC;"
-    selectAndDisplay(cur,req,['departement','total_naissance',], f"The statistics of births in French departments bettwin {startYear} - {endYear} from the most to the least")
+    selectAndDisplay(cur,req,['departement','total_naissance',], f"The statistics of births in French departments betwin {startYear} - {endYear} from the most to the least")
 
 
 

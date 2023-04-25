@@ -55,4 +55,3 @@ def getChoice(befformess, choices):
 def getPeriodFromCategory(category:str):
    words = category.split()
    return (words[2], words[4])
-   # return category[-3],category[-1]
