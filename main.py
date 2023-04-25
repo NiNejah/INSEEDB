@@ -26,6 +26,8 @@ def _optionRegion(cur):
             rId = getChoice ("Please choose a Region form this list : ",regionList)
             getDeptOfRegion(cur,regionList[rId-1])
 
+
+
 def _optionDepartement(cur):
     req = f'SELECT IdDepartement as code_de_departement, NameDepartement as departement \
         from Departement;'
@@ -34,7 +36,7 @@ def _optionDepartement(cur):
     year = ['2008','2013','2019']
 
     while True : 
-        user = getChoice("\t\t  ... Departement menu ... " , ['Go to Main menu ','List All Departement','The Most Populated Departement','The Least Populated Departement','Get Communes where Population >= ...'])
+        user = getChoice("\t\t  ... Departement menu ... " , ['Go to Main menu ','List All Departement','The Most Populated Departement','The Least Populated Departement','The statistics of births','Get Communes where Population >= ...'])
         if user == 1 :
             return 
         elif user == 2 :
@@ -46,6 +48,11 @@ def _optionDepartement(cur):
             yearCh =  getChoice ("Please choose a year : ",year)
             getMostLeastDept(cur,year[yearCh-1],False)
         elif user == 5 :
+            periodList = getNaissancesPeriodsList(cur)
+            periodChoice = getChoice ("Please choose a period form this list : ",periodList)
+            strt , end = getPeriodFromCategory(periodList[periodChoice-1])
+            getNaissanceDept(cur,strt,end)
+        elif user == 6 :
             deptChoice =  getChoice ("Please choose a departement form this list : ",deptList)
             limit = int(input("Please enter the min Population of the Commune : "))
             yearCh =  getChoice ("Please choose a year : ",year)
@@ -60,10 +67,9 @@ if __name__ == "__main__" :
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     # insertAll(conn , cur)
     # Vues : 
-    creatDeptView(cur)
-    creatRegionView(cur)
-
-    # stored procedure 
+    creatPopDeptView(cur)
+    creatPopRegionView(cur)
+    creatNaissancesDeptView(cur)
 
     while True :
         user = getChoice("\t\t  ... Main menu ... " , ['exit','Region','Department'])

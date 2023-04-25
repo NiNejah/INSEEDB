@@ -59,7 +59,7 @@ def getDeptOfRegion(cur,name):
         WHERE Region.NameRegion = '{name}' ;"
     selectAndDisplay(cur,req,['code_de_departement','departement'],("All Departement of "+name))
 
-def creatRegionView(cur):
+def creatPopRegionView(cur):
     req = f"CREATE OR REPLACE VIEW PopRegion AS \
         SELECT Region.IdRegion, Region.NameRegion, Statistic.StartYear, SUM(Statistic.StatValue) as Population \
         FROM Departement \
@@ -87,8 +87,6 @@ def getMostLeastRegion(cur,year,most):
 
 
 
-
-
 ################### Departement ###################
 
 def getCommuneOfDept(cur,IdDept,NameDept,minPop,year):
@@ -103,7 +101,7 @@ def getCommuneOfDept(cur,IdDept,NameDept,minPop,year):
         AND Statistic.StatValue >= {minPop};"
     selectAndDisplay(cur,req,['commune','population'], "Populasion of "+NameDept )
 
-def creatDeptView(cur):
+def creatPopDeptView(cur):
     req = f"CREATE OR REPLACE VIEW PopDepartement AS \
         SELECT Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear, SUM(Statistic.StatValue) as Population \
         FROM Statistic \
@@ -126,4 +124,30 @@ def getMostLeastDept(cur,year,most):
         title  = "The Least Populated Departement "
     selectAndDisplay(cur,req,['code_department','departement','population'], title )
 
+def creatNaissancesDeptView(cur):
+    req = f"CREATE OR REPLACE VIEW NaissDepartement AS \
+        SELECT Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear,  Statistic.EndYear, SUM(Statistic.StatValue) as Naissance \
+        FROM Statistic \
+            JOIN Commune on Commune.CodeCommune = statistic.CodeCommune \
+            JOIN Departement on Commune.IdDepartement = Departement.IdDepartement \
+        WHERE Statistic.Indicator = 'Naissances' \
+        AND Statistic.Category LIKE 'Naissances entre %' \
+        GROUP BY Departement.IdDepartement, Departement.NameDepartement, Statistic.StartYear,  Statistic.EndYear;"
+    sqlRequest(cur,req)
+
+def getNaissanceDept(cur,startYear,endYear):
+    req = f"SELECT NameDepartement as departement, SUM(Naissance) as total_naissance \
+        FROM NaissDepartement \
+        WHERE StartYear = {startYear} AND EndYear = {endYear} \
+        GROUP BY departement \
+        ORDER BY total_naissance DESC;"
+    selectAndDisplay(cur,req,['departement','total_naissance',], f"The statistics of births in French departments bettwin {startYear} - {endYear} from the most to the least")
+
+
+
+def getNaissancesPeriodsList(cur):
+    req = f"SELECT DISTINCT Category as period FROM Statistic \
+            WHERE Indicator = 'Naissances' \
+            ORDER BY period ASC;"
+    return makeListFromRequest(cur,req,'period')
 

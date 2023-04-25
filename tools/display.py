@@ -23,7 +23,7 @@ def tableToString(rows , rowsName):
         page += f'{r:25} |'
     page = page[:-1] + '\n'
     for i in range (len(rowsName)):
-        page += "--------------------------|"
+        page += "--------------------------+"
     page = page[:-1] + '\n'
     for d in rows :
         for r in rowsName :
@@ -44,9 +44,15 @@ def getChoice(befformess, choices):
       try :
          userCh = int(input (f"Enter your choice please (1 -> {len(choices)}) : "))
       except Exception as e :
+         printWarning("Invalid choice, possible choices (1 to "+str(len(choices))+')')
          continue
       if not (userCh > 0 and userCh <= len(choices)):
          printWarning("Invalid choice, possible choices (1 to "+str(len(choices))+')')
       else :
          break
    return userCh
+
+def getPeriodFromCategory(category:str):
+   words = category.split()
+   return (words[2], words[4])
+   # return category[-3],category[-1]

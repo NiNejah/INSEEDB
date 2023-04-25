@@ -1,4 +1,3 @@
-
 -- For Stored procedure EXO 3
 -- Create PopulationDepartement column in Departement 
 -- It will be called by the user (main.py) 
@@ -68,7 +67,6 @@ CALL CalculateRegionPopulation(2019);
 
 select * from Region;
 SELECT * FROM Departement ;
-
 
 ALTER TABLE Departement
 DROP COLUMN PopulationDepartement;
