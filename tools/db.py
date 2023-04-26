@@ -4,10 +4,15 @@ from tools.display import *
 
 
 def creatDB(conn, cur):
-    with open("../sql/tables", 'r') as f:
+    with open("./sql/tables.sql", 'r') as f:
         sql = f.read()
-        cur.execute(sql)
-        conn.commit()
+        try:
+            cur.execute(sql)
+            conn.commit()
+        except Exception as e : 
+            conn.rollback()  # rollback the transaction
+            print(color.RED +"You have already all database tables please make sour that you commented this line : creatDB(conn,cur) in main.py")
+
 
 
 def connect(dbName , userName , Pass):

@@ -4,6 +4,7 @@ INSEEDB app with python:
 
 ![home1](./images/icon.png)
 
+
 ## What is This
 
 ---
@@ -36,13 +37,13 @@ In [main.py](./main.py)
 
 ## demostation :
 
-![home1](./images/demo.gif)
+![demostation gif](./images/demo.gif)
 
 I have already all the tables that's why we see the Warning message to comment  **insertAll(conn , cur)** 
 
 
 
 ### info 
-* all the fill files in [./csv](./csv/) gentated by a python script from [dossier_complet.csv](https://www.insee.fr/fr/statistiques/6456192) and from [Official geographic code ](https://www.insee.fr/fr/information/6800675)
+* All the insert files in [./csv](./csv/) gentated by a python script in [tools](./tools/) from [dossier_complet.csv](https://www.insee.fr/fr/statistiques/6456192) and from [Official geographic code ](https://www.insee.fr/fr/information/6800675)
 
  

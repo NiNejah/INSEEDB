@@ -72,9 +72,9 @@ if __name__ == "__main__" :
     conn = connect(DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     ## uncomment this line if you don't have already all the tables
-    # creatDB(conn,cur)
+    creatDB(conn,cur)
     ## uncomment this line after the first execution    
-    # insertAll(conn , cur)
+    insertAll(conn , cur)
     # Vues : 
     creatViews(cur)
     while True :
@@ -86,6 +86,7 @@ if __name__ == "__main__" :
            _optionRegion(cur)   
         elif user == 3 :
             _optionDepartement(cur)
-        elif user == 4 : 
-            pass
+    cur.close()
+    conn.close()
+
 
