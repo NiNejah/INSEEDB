@@ -34,7 +34,7 @@ In [main.py](./main.py)
 *  comment this line after the first execution  **insertAll(conn , cur)**
 
 
-## demostation :
+## demonstration :
 
 ![home1](./images/demo.gif)
 
