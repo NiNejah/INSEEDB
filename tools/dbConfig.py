@@ -1,3 +1,4 @@
 DBNAME = "insee"
-USERNAME="postgres"
+USER_NAME="postgres"
+HOST="localhost"
 PASS="1111"
