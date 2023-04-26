@@ -69,7 +69,7 @@ def _optionDepartement(cur):
 
 if __name__ == "__main__" :
     printCheers("\t\t>>>>> Welcome to postState <<<<<")
-    conn = connect(DBNAME,USERNAME,PASS)
+    conn = connect(HOST,DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     ## uncomment this line if you don't have already all the tables
     # creatDB(conn,cur)

@@ -10,10 +10,10 @@ def creatDB(conn, cur):
         conn.commit()
 
 
-def connect(dbName , userName , Pass):
+def connect(host,dbName , userName , Pass):
     printAction('Connecting to database...')
     try:
-        conn = psycopg2.connect("host=localhost dbname="+dbName+" user="+userName+" password="+Pass)
+        conn = psycopg2.connect("host="+host+" dbname="+dbName+" user="+userName+" password="+Pass)
         return conn 
     except Exception as e :
         exit(color.RED +"Unable to connect to database: " + str(e) +color.END)
