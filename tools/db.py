@@ -4,7 +4,7 @@ from tools.display import *
 
 
 def creatDB(conn, cur):
-    with open("../sql/tables", 'r') as f:
+    with open("./sql/tables.sql", 'r') as f:
         sql = f.read()
         cur.execute(sql)
         conn.commit()
