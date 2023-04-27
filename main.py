@@ -72,9 +72,9 @@ if __name__ == "__main__" :
     conn = connect(HOST,DBNAME,USERNAME,PASS)
     cur = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
     ## uncomment this line if you don't have already all the tables
-    # creatDB(conn,cur)
+    creatDB(conn,cur)
     ## uncomment this line after the first execution    
-    # insertAll(conn , cur)
+    insertAll(conn , cur)
     # Vues : 
     creatViews(cur)
     while True :
